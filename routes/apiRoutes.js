@@ -31,8 +31,7 @@ router.post('/notes', (req, res) => {
         .addNote(req.body)
         .then((note) => {
             return res.json(note);
-        })
-        .catch(console.error)
+        }).catch(console.error)
         .catch((err) => res.status(500)
             .json(err))
         });
