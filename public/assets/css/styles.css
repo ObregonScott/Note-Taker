@@ -5,9 +5,8 @@ body {
   padding: 0;
 }
 
-.save-note {
-  display: none;
-}
+/* .save-note {
+} */
 
 .icons i {
   margin-left: 15px;
