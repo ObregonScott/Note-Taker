@@ -34,7 +34,7 @@ class Store {
         if(!title || !text) {
             throw new Error("Cannot be blank!!!");
         }
-        const newNote = {title, text, id: uuidv4()};
+        const newNote = {title, text, id: uuid()};
         return this.getNotes()
         .then((notes) => [...notes, newNote])
         .then((updateNotes) => this.write(updateNotes))
