@@ -4,18 +4,20 @@ const express = require('express');
 const path = require('path');
 const util = require('util')
 
-
 //Server SetUp
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//read and write
+const readFileAsync = util.promisify(fs.readFile);
+const writeFileAsync = util.promisify(fs.writeFile);
+
 //Middleware
-app.use(express.static('public'));
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // API routes
-
 //GET REQUEST
 app.get('/api/notes', function (req, res) {
     readFileAsync('./db/db.json', 'utf8').then(function (data) {
@@ -68,9 +70,6 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-//read and write
-const readFileAsync = util.promisify(fs.readFile);
-const writeFileAsync = util.promisify(fs.writeFile);
 
 // Listening
 app.listen(PORT, () => {
