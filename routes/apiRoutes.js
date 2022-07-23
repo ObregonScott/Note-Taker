@@ -15,7 +15,7 @@ router.get('/notes', (req, res) => {
             return res.json(notes);
         })
         .catch((err) => res.status(500)
-            .json(err));
+            .json(err))
     //   fs.readFile(path.join(__dirname, '../db/pickles.js'), (err,data) => {
     //   if(err) res.sendStatus(404);
     //   console.log(data);
@@ -30,9 +30,10 @@ router.post('/notes', (req, res) => {
         .addNote(req.body)
         .then((note) => {
             return res.json(note);
+            .catch(console.error)
         })
         .catch((err) => res.status(500)
-            .json(err));
+            .json(err))
 });
 
 //   const newNotes = req.body
@@ -59,7 +60,7 @@ router.delete('/notes/:id', (req, res) => {
             return res.json(notes);
         })
         .catch((err) => res.status(500)
-            .json(err));
+            .json(err))
 });
 //   let noteId = req.params.id;
 //   let readData = (path.join(__dirname('../db/db.json', "utf8")));
