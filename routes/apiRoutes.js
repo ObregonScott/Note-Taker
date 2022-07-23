@@ -26,29 +26,45 @@ router.get('/notes', (req, res) => {
 
 // API Route | Post Request
 router.post('/notes', (req, res) => {
-  const newNotes = req.body
-  newNotes.id = uuidv4();
-  let readData = (path.join(__dirname,('../db/db.json', "utf8")));
-
-  notes.push(newNotes);
-
-  fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
-    if (err) { res.sendStatus(404);
-    } else {
-      console.log('Note saved!');
-    }
-})
-res.json(readData);
+    storage
+    .addNote()
+    .then((note) => {
+        return res.json(note);
+    })
+    .catch((err) => res.status(500)
+    .json(err));
 });
+
+//   const newNotes = req.body
+//   newNotes.id = uuidv4();
+//   let readData = (path.join(__dirname,('../db/db.json', "utf8")));
+
+//   notes.push(newNotes);
+
+//   fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
+//     if (err) { res.sendStatus(404);
+//     } else {
+//       console.log('Note saved!');
+//     }
+// })
+// res.json(readData);
+// });
 
 
 // API Route | Delete Request
 router.delete('/notes/:id', (req, res) => {
-  let noteId = req.params.id;
-  let readData = (path.join(__dirname('../db/db.json', "utf8")));
-
-  let findData = readData.filter(note => note.id.length !== note)
+    storage
+    .removeNote()
+    .then((notes) => {
+        return res.json(notes);
+    })
+    .catch((err) => res.status(500)
+    .json(err));
 });
+//   let noteId = req.params.id;
+//   let readData = (path.join(__dirname('../db/db.json', "utf8")));
+//   let findData = readData.filter(note => note.id.length !== note)
+// });
 
 
 module.exports = router;

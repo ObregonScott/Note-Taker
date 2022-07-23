@@ -7,7 +7,7 @@ const { v4:uuidv4 } = require("uuidv4");
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
-class Store{
+class Store {
     read() {
         return readFileAsync("db/db.json", "utf8");
     }
