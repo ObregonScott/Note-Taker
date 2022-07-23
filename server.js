@@ -73,6 +73,6 @@ const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // Listening
-app.listen(PORT, function () {
-    console.log("Server is now running on port " + PORT);
-});
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
+  });
