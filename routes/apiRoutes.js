@@ -1,20 +1,26 @@
 //Dependencies/Tools/and Required files
 const router = require('express').Router();
-const path = require('path');
-const notes = require('../db/db.json');
-const {v4: uuidv4} = require('uuid');
+const storage = require('../db/pickles.js');
+// const path = require('path');
+// const {v4: uuidv4} = require('uuid');
 
 //Asynchronous Processes
-const fs = require('fs');
+// const fs = require('fs');
 
 // API Route | Get Request
 router.get('/notes', (req, res) => {
-  fs.readFile(path.join(__dirname, '../db/db.json'), (err,data) => {
-  if(err) res.sendStatus(404);
-  console.log(data);
-  res.json(JSON.parse(data));
-  console.log(process.cwd());
-  })
+    storage
+    .getNotes()
+    .then((notes) => {
+        return res.json(notes);
+    })
+    .catch((err) => res.status(500)
+    .json(err));
+//   fs.readFile(path.join(__dirname, '../db/pickles.js'), (err,data) => {
+//   if(err) res.sendStatus(404);
+//   console.log(data);
+//   res.json(JSON.parse(data));
+//   console.log(process.cwd());
 });
 
 
@@ -29,7 +35,7 @@ router.post('/notes', (req, res) => {
   fs.writeFile('./db/db.json', JSON.stringify(notes), err => {
     if (err) { res.sendStatus(404);
     } else {
-      console.log('Note saved.');
+      console.log('Note saved!');
     }
 })
 res.json(readData);
