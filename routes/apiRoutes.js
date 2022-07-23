@@ -10,29 +10,29 @@ const storage = require('../db/pickles.js');
 // API Route | Get Request
 router.get('/notes', (req, res) => {
     storage
-    .getNotes()
-    .then((notes) => {
-        return res.json(notes);
-    })
-    .catch((err) => res.status(500)
-    .json(err));
-//   fs.readFile(path.join(__dirname, '../db/pickles.js'), (err,data) => {
-//   if(err) res.sendStatus(404);
-//   console.log(data);
-//   res.json(JSON.parse(data));
-//   console.log(process.cwd());
+        .getNotes()
+        .then((notes) => {
+            return res.json(notes);
+        })
+        .catch((err) => res.status(500)
+            .json(err));
+    //   fs.readFile(path.join(__dirname, '../db/pickles.js'), (err,data) => {
+    //   if(err) res.sendStatus(404);
+    //   console.log(data);
+    //   res.json(JSON.parse(data));
+    //   console.log(process.cwd());
 });
 
 
 // API Route | Post Request
 router.post('/notes', (req, res) => {
     storage
-    .addNote()
-    .then((note) => {
-        return res.json(note);
-    })
-    .catch((err) => res.status(500)
-    .json(err));
+        .addNote(req.body)
+        .then((note) => {
+            return res.json(note);
+        })
+        .catch((err) => res.status(500)
+            .json(err));
 });
 
 //   const newNotes = req.body
@@ -54,12 +54,12 @@ router.post('/notes', (req, res) => {
 // API Route | Delete Request
 router.delete('/notes/:id', (req, res) => {
     storage
-    .removeNote()
-    .then((notes) => {
-        return res.json(notes);
-    })
-    .catch((err) => res.status(500)
-    .json(err));
+        .removeNote()
+        .then((notes) => {
+            return res.json(notes);
+        })
+        .catch((err) => res.status(500)
+            .json(err));
 });
 //   let noteId = req.params.id;
 //   let readData = (path.join(__dirname('../db/db.json', "utf8")));

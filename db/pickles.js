@@ -29,7 +29,7 @@ class Store {
     }
     addNote(note) {
         const {
-            title , text
+            title, text
         } = note;
         if(!title || !text) {
             throw new Error("Cannot be blank!!!");
