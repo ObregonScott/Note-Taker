@@ -1,7 +1,7 @@
 //Dependencies
 const fs = require("fs");
 const util = require("util");
-const { v4:uuidv4 } = require("uuidv4");
+const { uuid } = require('uuidv4');
 
 //Handling Asynchronous Code
 const readFileAsync = util.promisify(fs.readFile);
@@ -46,5 +46,6 @@ class Store {
         .then((filteredNotes) => this.write(filteredNotes))
     }
 }
+
 
 module.exports = new Store();

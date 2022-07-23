@@ -14,6 +14,7 @@ router.get('/notes', (req, res) => {
         .then((notes) => {
             return res.json(notes);
         })
+        .catch(console.error)
         .catch((err) => res.status(500)
             .json(err))
     //   fs.readFile(path.join(__dirname, '../db/pickles.js'), (err,data) => {
@@ -30,11 +31,11 @@ router.post('/notes', (req, res) => {
         .addNote(req.body)
         .then((note) => {
             return res.json(note);
-            .catch(console.error)
         })
+        .catch(console.error)
         .catch((err) => res.status(500)
             .json(err))
-});
+        });
 
 //   const newNotes = req.body
 //   newNotes.id = uuidv4();
@@ -59,6 +60,7 @@ router.delete('/notes/:id', (req, res) => {
         .then((notes) => {
             return res.json(notes);
         })
+        .catch(console.error)
         .catch((err) => res.status(500)
             .json(err))
 });
