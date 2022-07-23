@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Static Middleware
-app.use(express.static("./develop/public"));
+app.use(express.static("public"));
 
 
 // API Route | Get&Post&DELETE request
