@@ -27,6 +27,8 @@
   ## Usage
 
   Please follow link below
+  
+  https://note-taker-cms11.herokuapp.com/
 
   ## Technology
 
