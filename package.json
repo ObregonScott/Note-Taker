@@ -1,7 +1,7 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "App for making notes",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "uuid": "^8.3.2",
     "uuidv4": "^6.2.13"
   },
   "repository": {
@@ -19,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/ObregonScott/Note-Taker/issues"
   },
-  "homepage": "https://github.com/ObregonScott/Note-Taker#readme"
+  "homepage": "https://github.com/ObregonScott/Note-Taker#readme",
+  "devDependencies": {},
+  "keywords": [
+    "note",
+    "taker"
+  ]
 }
